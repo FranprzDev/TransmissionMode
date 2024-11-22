@@ -15,7 +15,7 @@ export function DarkDataTransmission() {
     if (isAnimating) {
       timer = setInterval(() => {
         setAnimationStep((prev) => (prev + 1) % (activeDemo === 'half' ? 2 : 1));
-      }, 3000);
+      }, 1000); // Aumentar la velocidad de la animación
 
       setTimeout(() => {
         setIsAnimating(false);
@@ -33,7 +33,7 @@ export function DarkDataTransmission() {
     setIsAnimating(true);
   };
 
-  const renderDots = (reverse = false, count = 6) => {
+  const renderDots = (reverse = false, count = 15) => { 
     const dots = [];
     for (let i = 0; i < count; i++) {
       dots.push(
@@ -43,7 +43,7 @@ export function DarkDataTransmission() {
             ${isAnimating ? `animate-transmission-${activeDemo}${reverse ? '-reverse' : ''}` : ''}`}
           style={{
             left: `${reverse ? 100 - (i / (count - 1)) * 100 : (i / (count - 1)) * 100}%`,
-            animationDelay: `${(i / (count - 1)) * 3}s`
+            animationDelay: `${(i / (count - 1)) * 1}s` 
           }}
         />
       );
@@ -60,21 +60,21 @@ export function DarkDataTransmission() {
           <Button
             variant={activeDemo === 'simplex' ? "default" : "outline"}
             onClick={() => { setActiveDemo('simplex'); setIsAnimating(false); }}
-            className={`bg-purple-700 hover:bg-purple-600 text-white ${activeDemo === 'simplex' ? '' : 'border-purple-500'}`}
+            className={`bg-purple-700 hover:bg-purple-600 text-white ${activeDemo === 'simplex' ? 'border-4 border-purple-400' : 'border-purple-500'}`}
           >
             Simplex (B)
           </Button>
           <Button
             variant={activeDemo === 'half' ? "default" : "outline"}
             onClick={() => { setActiveDemo('half'); setIsAnimating(false); }}
-            className={`bg-purple-700 hover:bg-purple-600 text-white ${activeDemo === 'half' ? '' : 'border-purple-500'}`}
+            className={`bg-purple-700 hover:bg-purple-600 text-white ${activeDemo === 'half' ? 'border-4 border-purple-400' : 'border-purple-500'}`}
           >
             Half-Duplex (B)
           </Button>
           <Button
             variant={activeDemo === 'full' ? "default" : "outline"}
             onClick={() => { setActiveDemo('full'); setIsAnimating(false); }}
-            className={`bg-purple-700 hover:bg-purple-600 text-white ${activeDemo === 'full' ? '' : 'border-purple-500'}`}
+            className={`bg-purple-700 hover:bg-purple-600 text-white ${activeDemo === 'full' ? 'border-4 border-purple-400' : 'border-purple-500'}`}
           >
             Full-Duplex (B/2)
           </Button>
@@ -98,7 +98,7 @@ export function DarkDataTransmission() {
             <div className="absolute inset-0 flex items-center justify-center">
               {activeDemo === 'simplex' && (
                 <div className="w-1/2 h-1 bg-gray-700 relative">
-                  {isAnimating && renderDots(false, 5)}
+                  {isAnimating && renderDots(false, 15)}
                   <ArrowRight className="absolute right-0 top-1/2 -translate-y-1/2 text-purple-500" />
                 </div>
               )}
@@ -112,15 +112,11 @@ export function DarkDataTransmission() {
               )}
               
               {activeDemo === 'full' && (
-                <div className="relative w-1/2 h-12">
-                  <div className="absolute top-0 w-full h-1 bg-gray-700">
-                    {isAnimating && renderDots(false, 3)}
-                    <ArrowRight className="absolute right-0 top-1/2 -translate-y-1/2 text-purple-500" />
-                  </div>
-                  <div className="absolute bottom-0 w-full h-1 bg-gray-700">
-                    {isAnimating && renderDots(true, 3)}
-                    <ArrowLeft className="absolute left-0 top-1/2 -translate-y-1/2 text-purple-500" />
-                  </div>
+                <div className="relative w-1/2 h-1 bg-gray-700">
+                  {isAnimating && renderDots(false, 15)}
+                  {isAnimating && renderDots(true, 15)}
+                  <ArrowRight className="absolute right-0 top-1/2 -translate-y-1/2 text-purple-500" />
+                  <ArrowLeft className="absolute left-0 top-1/2 -translate-y-1/2 text-purple-500" />
                 </div>
               )}
             </div>
@@ -185,23 +181,23 @@ export function DarkDataTransmission() {
         }
         
         .animate-transmission-simplex {
-          animation: transmission-simplex 3s linear;
+          animation: transmission-simplex 1s linear;
         }
         
         .animate-transmission-half {
-          animation: transmission-half 3s linear;
+          animation: transmission-half 1s linear;
         }
         
         .animate-transmission-half-reverse {
-          animation: transmission-half-reverse 3s linear;
+          animation: transmission-half-reverse 1s linear;
         }
         
         .animate-transmission-full {
-          animation: transmission-full 3s linear;
+          animation: transmission-full 1s linear;
         }
         
         .animate-transmission-full-reverse {
-          animation: transmission-full-reverse 3s linear;
+          animation: transmission-full-reverse 1s linear;
         }
       `}</style>
     </div>
