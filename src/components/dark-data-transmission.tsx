@@ -15,7 +15,7 @@ export function DarkDataTransmission() {
     if (isAnimating) {
       timer = setInterval(() => {
         setAnimationStep((prev) => (prev + 1) % (activeDemo === 'half' ? 2 : 1));
-      }, 1000); // Aumentar la velocidad de la animación
+      }, 1000);
 
       setTimeout(() => {
         setIsAnimating(false);
