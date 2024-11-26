@@ -20,7 +20,7 @@ export function DarkDataTransmission() {
       setTimeout(() => {
         setIsAnimating(false);
         clearInterval(timer);
-      }, 5000);
+      }, 30000); // Change this value to 15000 for 15 seconds
     } else {
       setAnimationStep(0);
     }
@@ -182,23 +182,23 @@ export function DarkDataTransmission() {
         }
         
         .animate-transmission-simplex {
-          animation: transmission-simplex 1s linear;
+          animation: transmission-simplex 1s linear infinite;
         }
         
         .animate-transmission-half {
-          animation: transmission-half 1s linear;
+          animation: transmission-half 1s linear infinite;
         }
         
         .animate-transmission-half-reverse {
-          animation: transmission-half-reverse 1s linear;
+          animation: transmission-half-reverse 1s linear infinite;
         }
         
         .animate-transmission-full {
-          animation: transmission-full 1s linear;
+          animation: transmission-full 1s linear infinite;
         }
         
         .animate-transmission-full-reverse {
-          animation: transmission-full-reverse 1s linear;
+          animation: transmission-full-reverse 1s linear infinite;
         }
       `}</style>
     </div>
