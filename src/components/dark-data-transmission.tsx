@@ -39,7 +39,8 @@ export function DarkDataTransmission() {
       dots.push(
         <div
           key={i}
-          className={`absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-purple-500 
+          className={`absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full 
+            ${reverse ? 'bg-yellow-500' : 'bg-purple-500'} 
             ${isAnimating ? `animate-transmission-${activeDemo}${reverse ? '-reverse' : ''}` : ''}`}
           style={{
             left: `${reverse ? 100 - (i / (count - 1)) * 100 : (i / (count - 1)) * 100}%`,
